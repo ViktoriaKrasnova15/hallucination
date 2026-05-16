@@ -13,6 +13,12 @@ cd SMILES-HALLUCINATION-DETECTION
 pip install -r requirements.txt
 python solution.py
 
+Then just run in a cell in Colab:
+
+import os
+os.chdir("/content/hallucination")
+!python solution.py
+
 ## Final solution description
 I've modified probe.py, aggregation.py and splitting.py.
 
