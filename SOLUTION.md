@@ -20,7 +20,7 @@ In probe.py I've added Dropout() to the net to prevent overfitting (which was no
 I've also replaced Adam optimizer with AdamW optimizer with smaller lr and weight decay for the same reason.
 The last alteration in this file to stop overfitting - Scheduler.
 
-As for splitting.py, I've addend K-fold valindation on 5 folds to get more stable metric results.
+As for splitting.py, I've added K-fold valindation on 5 folds to get more stable metric results. So as a baseline I used test ROC AUC 71,67% (code as in the task but with k-fold validation, it demonstrated overfitting (high train quality, though 20% lower test quality)).
 
 In aggregation.py, I've saved the basic metric, as it has shown hight quality (over 70% ROC-AUC). 
 I've also added the same approach in regards to the pre-last layer. My intuition was to look at the last layers
