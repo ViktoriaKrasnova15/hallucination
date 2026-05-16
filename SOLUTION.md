@@ -31,14 +31,16 @@ I've added token variance as a metric (for the first layer, mid layer and 2 last
 Token variance is supposed to be lower for the normal answers in repspect to hallucinations because hallucinations are less predictable.
 There are some notions of this method in scientific articles on hallucination detection. It was my attempt to include variation though through an easier approach.
 
-I've also tried using Effective Rank-based as it was mentioned in this article https://arxiv.org/abs/2510.08389 Authors used different answers for the SVD matrix but I tried using
-last 6 layers instead, since these layers are supposed to reflect meaning.
-
 I've also used one geometric feature - cosine distance between two nearby layers. I've chosen 5 pairs of the layers so that these pairs cover the first, the last and the middle
-of the model. There are some articles, whose author claim that we should look and the dynamics between the hidden states (how smooth they change), for example,
-here https://aclanthology.org/2025.acl-long.880/. Counting cosine distance was my attempt to catch this cross-layer metric.
+of the model. There are some articles, whose author claim that we should look and the dynamics between the hidden states (how smoothly they change), for example,
+here https://aclanthology.org/2025.acl-long.880/. 
+
+Counting cosine distance was my attempt to catch this cross-layer metric.
 
 ## Experiments and failed attempts
 
 I've tried using mean pooling insted of looking at the last token hidden state, but it only worsened the quality. I've also tried to look more precisely at the hidden states
 of the mid layers but it also spoiled the quality. So I decided to stick to the baseline (last token approach) and add the metrics listed above as additional ones.
+
+I've also tried using Effective Rank-based as it was mentioned in this article https://arxiv.org/abs/2510.08389 Authors used different answers for the SVD matrix but I tried using
+last 6 layers instead, since these layers are supposed to reflect meaning. Unfortunately, it only slightly dropped the test ROC AUC marked as primary metric so finally I did not use this approach.
